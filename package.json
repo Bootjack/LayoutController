@@ -1,0 +1,18 @@
+{
+  "name": "layout-controller",
+  "version": "1.0.0",
+  "description": "Generic layout handler using flexbox CSS",
+  "main": "layout-manager.js",
+  "dependencies": {
+    "compression": "^1.6.0",
+    "serve-static": "^1.10.0",
+    "connect": "^3.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Jason Hinebaugh",
+  "license": "ISC"
+}

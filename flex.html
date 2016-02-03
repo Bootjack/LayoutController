@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Layout Experiment</title>
+    <style>
+        #header {
+            background: gray;
+            display: flex;
+            flex-direction: row;
+        }
+        #header > div {
+            border: 1px solid cyan;
+            margin: 1px;
+            padding: 1em;
+        }
+        #buttons {
+            flex: 0 0 auto;
+        }
+        #examiner {
+            flex: 1 0 auto;
+            text-align: center;
+        }
+        #title {
+            flex: 0 1 auto;
+            overflow: hidden;
+            text-algin: right;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <div id="buttons"><button>A</button><button>B</button><button>C</button></div>
+        <div id="examiner">Michael Dorn</div>
+        <div id="title">Untitled Title Lorem Ipsum Dolor Sit Amet</div>
+    </div>
+</body>
+</html>

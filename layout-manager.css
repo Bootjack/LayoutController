@@ -1,0 +1,236 @@
+body, #root-layout-container {
+    background-color: hsl(0, 0%, 40%);
+    bottom: 0;
+    color: hsl(0, 0%, 20%);
+    font-family: sans-serif;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#root-layout-container {
+    top: 2em;
+}
+
+.header {
+    background-color: black;
+    height: 1em;
+    margin: 0;
+    padding: 0.5em;
+}
+
+.header h1 {
+    color: white;
+    display: inline-block;
+    font-size: 12pt;
+    height: 1em;
+    margin: 0;
+    padding: 0;
+}
+
+.header button {
+    float: right;
+    margin: 0 0 0 1em;
+}
+
+.layout-manager--container {
+    bottom: 0;
+    display: flex;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.layout-manager--column,
+.layout-manager--row {
+    display: flex;
+    width: 100%;
+}
+.layout-manager--column {
+    flex-direction: column;
+}
+.layout-manager--row {
+    flex-direction: row;
+}
+
+.layout-manager--zone {
+    flex: 1 1 0;
+    position: relative;
+}
+.layout-manager--zone.has-child-group {
+    display: flex;
+}
+.layout-manager--zone.is-collapsed {
+    flex: 0 0 50px;
+}
+.layout-manager--zone.is-collapsed .layout-manager--zone.has-child-group {
+    background-color: magenta;
+}
+.layout-manager--zone.is-collapsed .layout-manager--zone .layout-manager--zone,
+.layout-manager--zone.is-collapsed .layout-manager--zone .layout-manager--divider {
+    display: none;
+}
+
+.layout-manager--divider {
+    position: relative;
+    z-index: 5000;
+}
+
+.layout-manager--divider--resizeHandle {
+    background-color: hsl(0, 0%, 100%);
+    position: absolute;
+}
+.layout-manager--column > .layout-manager--divider .layout-manager--divider--resizeHandle {
+    cursor: ns-resize;
+    height: 6px;
+    margin-top: -3px;
+    width: 100%;
+}
+.layout-manager--row > .layout-manager--divider .layout-manager--divider--resizeHandle {
+    cursor: ew-resize;
+    height: 100%;
+    margin-left: -3px;
+    width: 6px;
+}
+
+.layout-manager--divider .layout-manager--divider--collapse-button {
+    background-color: white;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    display: block;
+    height: 18px;
+    margin: 1px;
+    padding: 0;
+    position: absolute;
+    width: 18px;
+}
+
+.layout-manager--divider.is-collapsed-backward .layout-manager--divider--collapse-button.backward,
+.layout-manager--divider.is-collapsed-forward .layout-manager--divider--collapse-button.forward {
+    display: none;
+}
+
+.layout-manager--column > .layout-manager--divider .layout-manager--divider--collapse-button {
+    margin-top: -9px;
+    transform: rotate(90deg);
+}
+.layout-manager--column > .layout-manager--divider .layout-manager--divider--collapse-button.backward {
+    right: 50%;
+}
+.layout-manager--column > .layout-manager--divider.is-collapsed-forward .layout-manager--divider--collapse-button.backward {
+    margin-right: -9px;
+}
+.layout-manager--column > .layout-manager--divider .layout-manager--divider--collapse-button.forward {
+    left: 50%;
+}
+.layout-manager--column > .layout-manager--divider.is-collapsed-backward .layout-manager--divider--collapse-button.forward {
+    margin-left: -9px;
+}
+
+.layout-manager--row > .layout-manager--divider .layout-manager--divider--collapse-button {
+    margin-left: -9px;
+}
+.layout-manager--row > .layout-manager--divider .layout-manager--divider--collapse-button.backward {
+    bottom: 50%;
+}
+.layout-manager--row > .layout-manager--divider.is-collapsed-forward .layout-manager--divider--collapse-button.backward {
+    margin-bottom: -9px;
+}
+.layout-manager--row > .layout-manager--divider .layout-manager--divider--collapse-button.forward {
+    top: 50%;
+}
+.layout-manager--row > .layout-manager--divider.is-collapsed-backward .layout-manager--divider--collapse-button.forward {
+    margin-top: -9px;
+}
+
+.layout-manager--zone .layout-manager--zone-identifier {
+    color: hsla(180, 10%, 0%, 0.2);
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    left: 0;
+    margin-top: -0.5em;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+    z-index: 1000;
+}
+
+.layout-manager--row > .layout-manager--zone.is-collapsed > .layout-manager--zone-identifier {
+    transform: rotate(90deg);
+}
+.layout-manager--row > .layout-manager--zone.is-collapsed > .layout-manager--zone-identifier {
+    display: none;
+}
+.layout-manager--zone .layout-manager--zone-identifier .remove-zone-button {
+    display: block;
+    margin: 0 auto;
+}
+
+.layout-manager--container.is-editing-mode {
+    background: whitesmoke;
+    box-shadow: 2px 2px 8px hsla(0, 0%, 0%, 0.8);
+    display; flex;
+    height: 250px;
+    padding: 10px;
+    width: 400px;
+    z-index: 5000;
+}
+.layout-manager--container.is-editing-mode .layout-manager--zone {
+    background-color: white;
+    border: 1px solid gray;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    display: flex;
+    margin: -1px;
+}
+.layout-manager--container.is-editing-mode .zone-content-placeholder {
+    background-color: white;
+    flex: 1;
+}
+.layout-manager--container.is-editing-mode .new-zone-target,
+.layout-manager--container.is-editing-mode .new-group-target {
+    border: none;
+    cursor: pointer;
+    flex: 0 0 10px;
+}
+.layout-manager--container.is-editing-mode .new-zone-target {
+    background-color: lightblue;
+}
+.layout-manager--container.is-editing-mode .new-group-target {
+    background-color: lightpink;
+}
+.layout-manager--container.is-editing-mode > .new-group-target {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    margin: -1px;
+}
+
+.dummy-content {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.luna {
+    background-color: hsl(180, 10%, 70%);
+}
+.deimos {
+    background-color: hsl(18, 80%, 60%);
+}
+.phobos {
+    background-color: hsl(180, 80%, 60%);
+}
+.io {
+    background-color: hsl(212, 80%, 60%);
+}
+.ganymede {
+    background-color: hsl(58, 80%, 60%);
+}
